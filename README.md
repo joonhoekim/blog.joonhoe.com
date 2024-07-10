@@ -1,2 +1,2 @@
-# joonhoe-blog
-Spring-Boot 기반의 블로그입니다.
+# blog.joonhoe.com
+Hi! I am developing the blog that I always hope to have.
