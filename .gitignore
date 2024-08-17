@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+.idea
+
 # dependencies
 /node_modules
 /.pnp
@@ -111,3 +113,4 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+/pocketbase_0.22.19_windows_amd64/

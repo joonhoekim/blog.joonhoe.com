@@ -1,0 +1,3 @@
+[submodule "secret.blog.joonhoe.com"]
+	path = secret.blog.joonhoe.com
+	url = https://github.com/joonhoekim/secret.blog.joonhoe.com
