@@ -1,4 +1,3 @@
-# Stack 
+# Stack
+
 ## PocketBase + Nextjs + Lexical
-
-
