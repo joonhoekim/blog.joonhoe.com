@@ -19,8 +19,8 @@ public class TestRepositoryTest {
   @Test
   public void testInsert() {
     IntStream.rangeClosed(1,100).forEach(i->{
-      TestEntity testEntity = TestEntity.builder
-    })
+      
+    });
   }
 
 }

@@ -7,11 +7,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/test")
 public class TestController {
 
-  @GetMapping
+  @GetMapping("/test")
   public String test() {
     return "Hello World";
   }
+
+  @GetMapping("/testjson")
+  public String[] testjson() {
+    return new String[]{"Hello", "World"};
+  }
+
+
 }
