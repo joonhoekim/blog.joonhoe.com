@@ -12,12 +12,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.boot.autoconfigure.web.WebProperties.Resources.Chain.Strategy;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 @Entity
 @Table(name="tbl_memo")
 @ToString
 @Getter
 @Builder
+//Builder REQUIRES AllArgsConstructor and NoArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 public class Memo {
