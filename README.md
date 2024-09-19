@@ -1,3 +1,13 @@
 # Stack
 
-## PocketBase + Nextjs + Lexical
+## BE
+### Spring Boot
+- JPA
+- QueryDSL
+
+### MariaDB
+
+## FE
+### Next.js
+- Lexical
+- React Arborist
