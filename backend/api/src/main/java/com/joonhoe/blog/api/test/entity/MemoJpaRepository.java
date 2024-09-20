@@ -2,8 +2,6 @@ package com.joonhoe.blog.api.test.entity;
 
 import jakarta.transaction.Transactional;
 import java.util.List;
-import jdk.jfr.Percentage;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -49,8 +47,8 @@ public interface MemoJpaRepository extends JpaRepository<Memo, Long> {
 
   @Transactional
   @Modifying
-  @Query("update Memo m set m.memoText = :#{#param.memoText} where m.mno = #{#param.mno}")
-  int updateMemoText(@Param("param") Memo memo);
+  @Query("update Memo m set m.memoText = :#{#param.memoText} where m.mno = :#{#param.mno}")
+  int updateMemoTextWithParam(@Param("param") Memo memo);
 
   @Query(value = "select m from Memo m where m.mno > :mno", countQuery = "select count(m) from Memo m where m.mno > :mno")
   Page<Memo> getListWithQuery(Long mno, Pageable pageable);
@@ -61,7 +59,7 @@ public interface MemoJpaRepository extends JpaRepository<Memo, Long> {
   Page<Object[]> getListWithQueryObject(Long mno, Pageable pageable);
 
   // native SQL 을 직접 사용할 수도 있다. ORM 의 장점을 잃게 되지만, 아주 복잡한 구문 처리 혹은 특정 DB의 파인 튜닝을 목적으로 사용한다.
-  @Query(value = "select * from ememo where mno > 0", nativeQuery = true)
+  @Query(value = "select * from memo where mno > 0", nativeQuery = true)
   List<Object> getNativeResult();
 
 }

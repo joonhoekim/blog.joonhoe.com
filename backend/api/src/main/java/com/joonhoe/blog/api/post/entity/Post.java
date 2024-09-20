@@ -1,4 +1,4 @@
-package com.joonhoe.blog.api.test.entity;
+package com.joonhoe.blog.api.post.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,20 +13,25 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "tbl_memo")
+@Table(name = "post")
 @ToString
 @Getter
 @Builder
-//Builder REQUIRES AllArgsConstructor and NoArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
-public class Memo {
+public class Post {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long mno;
+  private Long id;
 
-  @Column(length = 200, nullable = false)
-  private String memoText;
+  @Column
+  private Long parentId;
+
+  @Column(length = 64, nullable = false)
+  private String title;
+
+  @Column(nullable = true)
+  private String content;
 
 }
