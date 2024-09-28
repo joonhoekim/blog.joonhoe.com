@@ -1,27 +1,34 @@
 import type { Metadata } from "next";
-import { Noto_Sans_KR, Nanum_Myeongjo } from "next/font/google";
+import { cn } from '@/lib/utils'
+
 import "./globals.css";
 import Link from "next/link";
+import {serif, sansSerif} from '@/lib/fonts'
+//설정
+import { siteConfig } from '@/config/site'
 
-// const inter = Inter({ subsets: ["latin"] });
-const notoSansKr = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["100", "400", "700", "900"],
-  variable: "--font-noto-sans-kr",
-  display: "swap",
-});
+//커스텀 컴포넌트
+import { SiteHeader } from '@/components/site-header'
+import { TailwindIndicator } from '@/components/tailwind-indicator'
+import { ThemeProvider } from '@/components/theme-provider'
 
-const nanumMyeongjo = Nanum_Myeongjo({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-nanum-myeongjo",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
-  title: "blllg",
-  description: "blllg is self-hostable web app inspired by obsidian.",
-};
+  title: {
+    default: siteConfig.name,
+    template: `%s - ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+}
 
 export default function RootLayout({
   children,
@@ -30,11 +37,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${notoSansKr.variable} ${nanumMyeongjo.variable}`}>
-        <header className="flex items-center justify-between">
-          <Link href="/">HOME</Link>
-        </header>
-        {children}
+      <body className={cn(
+          'min-h-screen bg-background font-sans antialiased',
+          serif.variable, sansSerif.variable
+      )}>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <div className="relative flex min-h-screen flex-col">
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+        </div>
+        <TailwindIndicator />
+      </ThemeProvider>
       </body>
     </html>
   );
