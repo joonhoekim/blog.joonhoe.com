@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { cn } from '@/lib/utils'
 
-import "./globals.css";
-import Link from "next/link";
-import {serif, sansSerif} from '@/lib/fonts'
 //설정
 import { siteConfig } from '@/config/site'
+import { cn } from '@/lib/utils'
+import "./globals.css";
+
+//font
+import {serif, sansSerif} from '@/lib/fonts'
 
 //커스텀 컴포넌트
-import { SiteHeader } from '@/components/site-header'
-import { TailwindIndicator } from '@/components/tailwind-indicator'
-import { ThemeProvider } from '@/components/theme-provider'
-
+import { SiteHeader } from '@/components/layout/site-header'
+import { TailwindIndicator } from '@/components/layout/tailwind-indicator'
+import { ThemeProvider } from '@/components/layout/theme-provider'
 
 export const metadata: Metadata = {
   title: {
