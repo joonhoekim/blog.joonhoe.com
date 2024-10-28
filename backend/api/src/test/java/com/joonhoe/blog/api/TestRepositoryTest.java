@@ -1,7 +1,6 @@
 package com.joonhoe.blog.api;
 
-import com.joonhoe.blog.api.test.entity.TestEntity;
-import com.joonhoe.blog.api.test.repository.TestRepository;
+import com.joonhoe.blog.test.repository.TestRepository;
 import java.util.stream.IntStream;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;

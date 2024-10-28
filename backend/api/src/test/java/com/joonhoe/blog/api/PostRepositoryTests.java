@@ -1,7 +1,7 @@
 package com.joonhoe.blog.api;
 
-import com.joonhoe.blog.api.post.entity.Post;
-import com.joonhoe.blog.api.post.repository.PostRepository;
+import com.joonhoe.blog.post.entity.Post;
+import com.joonhoe.blog.post.repository.PostRepository;
 import java.util.List;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;

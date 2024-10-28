@@ -1,7 +1,7 @@
 package com.joonhoe.blog.api;
 
-import com.joonhoe.blog.api.test.entity.Memo;
-import com.joonhoe.blog.api.test.entity.MemoJpaRepository;
+import com.joonhoe.blog.test.entity.Memo;
+import com.joonhoe.blog.test.entity.MemoJpaRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -94,7 +94,7 @@ public class MemoRepositoryTests {
 
     System.out.println(result);
     // 페이지는 toString에서는 아래와 같이 나온다.
-    // Page 1 of 10 containing com.joonhoe.blog.api.test.entity.Memo instances
+    // Page 1 of 10 containing com.joonhoe.blog.test.entity.Memo instances
 
     // 개별 원소를 조회하려면 내장 메서드들을 사용한다. 다양한 메서드들이 있다.
 
