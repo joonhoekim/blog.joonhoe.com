@@ -1,0 +1,11 @@
+{
+    // 여기는 환경별로 바꿔줘야 함
+    "java.jdt.ls.java.home": "/home/joonhoe/.sdkman/candidates/java/current",
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-17",
+            "path": "/home/joonhoe/.sdkman/candidates/java/current",
+            "default": true
+        }
+    ]
+}
