@@ -1,31 +1,42 @@
+// src/lib/auth.ts
 import { User } from "@/types/auth";
 
-// src/lib/auth.ts
-export const login = () => {
-  window.location.href = 'http://localhost:8080/oauth2/authorization/google';
-};
+const TOKEN_KEY = 'token';
+const USER_KEY = 'user';
 
-export const handleAuthCallback = async (
-  token: string,
-  email: string,
-  name: string
-): Promise<void> => {
-  if (token) {
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify({ email, name }));
+export const auth = {
+  setToken(token: string) {
+    localStorage.setItem(TOKEN_KEY, token);
+  },
+  
+  getToken(): string | null {
+    return localStorage.getItem(TOKEN_KEY);
+  },
+  
+  setUser(user: User) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+  },
+  
+  getUser(): User | null {
+    const userStr = localStorage.getItem(USER_KEY);
+    return userStr ? JSON.parse(userStr) : null;
+  },
+  
+  removeToken() {
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(USER_KEY);
+  },
+  
+  isAuthenticated(): boolean {
+    return !!this.getToken();
+  },
+
+  handleAuthCallback(token: string, email: string, name: string): void {
+    this.setToken(token);
+    this.setUser({ email, name });
+  },
+
+  logout() {
+    this.removeToken();
   }
-};
-
-export const logout = () => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
-};
-
-export const getUser = (): User | null => {
-  const userStr = localStorage.getItem('user');
-  return userStr ? JSON.parse(userStr) : null;
-};
-
-export const getToken = (): string | null => {
-  return localStorage.getItem('token');
 };
