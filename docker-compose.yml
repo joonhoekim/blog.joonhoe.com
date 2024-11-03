@@ -1,0 +1,25 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  database:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: total_note
+      POSTGRES_USER: your_strong_user
+      POSTGRES_PASSWORD: your_strong_user
+      POSTGRES_SCHEMA: total_note_schema
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-schema.sql:/docker-entrypoint-initdb.d/init-schema.sql
+    command: ['postgres', '-c', 'listen_addresses=*']
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U your_strong_user -d total_note']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
