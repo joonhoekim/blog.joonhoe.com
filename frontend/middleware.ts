@@ -8,8 +8,7 @@ import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 export function middleware(request: NextRequest) {
-
-    // API 요청 처리로 api로 시작하는 경우에만 api 서버로 요청 전달
+  // API 요청 처리로 api로 시작하는 경우에만 api 서버로 요청 전달
   if (request.nextUrl.pathname.startsWith('/api/')) {
     // HTTP ONLY 쿠키에서 JWT 토큰 추출
     const jwt = request.cookies.get('jwt')
@@ -25,7 +24,8 @@ export function middleware(request: NextRequest) {
       {
         request: {
           headers: requestHeaders,
-        }
+        },
       }
     )
+  }
 }

@@ -1,15 +1,8 @@
 // next.config.mjs
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  async rewrites() {
-     return [
-      // 나머지 api 요청은 백엔드로 리라이트
-      {
-        source: '/api/:path*',
-        destination: `${process.env.SERVER_URL}/auth/:path*/api/:path*`
-      }
-    ]
-  }
-};
+  // 정적인 rewrite 설정 대신 middleware.ts에서 처리함.
+}
 
-export default nextConfig;
+export default nextConfig
